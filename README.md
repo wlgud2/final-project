@@ -1,5 +1,7 @@
 # 파이널 프로젝트
 
+---
+
 ### 과정
 
 - 기능프로세스(참조사이트 시연)->요구사항 분석 모델링 -> 클래스 설계(Mapper,Service/impl, Controller, DTO)->**view(html)**->본인, 참조사이트 확인, Template 제외->DB Modeling->스키마 생성, 스프링부트 프로젝트 만들어서 깃허브 올리기 -> 협업자 등록->프로젝트 계획(todo, inProgress, Done)->브랜치 생성->코딩->병합
@@ -13,14 +15,5 @@
 
 ### 맡은 구현 사항
 
-- create, update
-
-### 오류
-
-1. git 에서 clone하고 sts에서 프로젝트 열었을 때 build.gradle 우클릭 시, gradle 탭이 없는 것을 확인
-
-- 해결
-  - Configure - Add Gradle Nature
-  - [참조](https://bug41.tistory.com/130)
-
-2. 
+- CRUD(DELETE비밀번호확인X 로그인 상태면 되게, 정말 삭제하시겠습니까?)
+- 공지(INTERCEPTOR사용)
