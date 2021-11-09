@@ -37,30 +37,15 @@ where tag_id=1;
 
 delete from zagook_contents
 where contentsno=302;
+
 /*목록*/
-	select contentsno, wname, tag, rdate, likecnt, r
-		from (
-		select contentsno, cateno, pname, price, filename, stock, rdate,
-		rownum r
-		from(
-		select contentsno, cateno, pname, price, filename,
-		stock, rdate
-		from contents
-		<where>
-			<choose>
-				<when test="col=='pname'">
-					pname like '%'||#{word}||'%'
-				</when>
-				<when test="col=='price'">
-					price like '%'||#{word}||'%'
-				</when>
-				<when test="col=='cateno'">
-					cateno like '%'||#{word}||'%'
-				</when>
-			</choose>
-		</where>
-		order by contentsno desc
-		)
-        <![CDATA[       
-                )where r >= #{sno} and r <= #{eno}
-        ]]><!-- 오라클에서는 이렇게 나눠서 해줘야함 -->
+select c.contentsno, m.mname, t.tag, c.rdate, c.likecnt, r
+from (
+select c.contentsno, m.mname, t.tag, c.rdate, c.likecnt, rownum r
+from(
+select c.contentsno, m.mname, t.tag, c.rdate, c.likecnt
+from zagook_contents c, zagook_tag t, zagook_posttag p, zagook_member m
+where m.id=c.id
+and c.contentsno=p.contentsno
+and t.tag_id=p.tag_id
+));
